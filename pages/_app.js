@@ -14,6 +14,12 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: sans-serif;
     background-color: #ebdbea;
+    background-image: url("https://i.redd.it/1fdmr75w8c611.png"); 
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-attachment: fixed;
+    background-size: cover;
+
   }
 
   #__next {

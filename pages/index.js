@@ -1,6 +1,6 @@
 import MainGrid from '../src/components/MainGrid'
 import Box from '../src/components/Box'
-import { AlurakutMenu, AlurakutProfileSidebarMenuDefault, OrkutNostalgicIconSet } from '../src/lib/RenatakutCommons';
+import { AlurakutMenu, AlurakutProfileSidebarMenuDefault, AlurakutStyles, OrkutNostalgicIconSet } from '../src/lib/RenatakutCommons';
 import { ProfileRelationsBoxWrapper } from '../src/components/ProfileRelations';
 import React from 'react';
 
@@ -102,6 +102,10 @@ export default function Home() {
         <div className="welcomeArea" style={{gridArea: 'welcomeArea'}}>
           <Box>
             <h1 className="title">Bem vindo(a), Tomoyo</h1>
+            <p>
+              <b>Sorte de hoje: </b>
+              A pessoa que lê a sua sorte não está se sentindo bem hoje. Esperamos que você esteja.
+            </p>
             <OrkutNostalgicIconSet />
           </Box>
           <Box>
