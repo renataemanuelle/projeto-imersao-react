@@ -54,7 +54,7 @@ export function AlurakutMenu({ user }) {
 }
 AlurakutMenu.Wrapper = styled.header`
   width: 100%;
-  /* background-color: #450329; */
+  background-color: #a1cbf2;
   .alurakutMenuProfileSidebar {
     background: white;
     position: fixed;
@@ -93,7 +93,7 @@ AlurakutMenu.Wrapper = styled.header`
     }
   }
   .container {
-    background-color: #70baff;
+    background-color: #a1cbf2;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     padding: 7px 16px;
@@ -142,7 +142,7 @@ AlurakutMenu.Wrapper = styled.header`
     }
     input {
       color: #ffffff;
-      background: #6091bf;
+      background: #8aaccc;
       padding: 10px 42px;
       border: 0;
       background-image: url(${`${BASE_URL}/icons/search.svg`});

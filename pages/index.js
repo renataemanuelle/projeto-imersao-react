@@ -205,15 +205,18 @@ export default function Home() {
             </h2>
             <ul>
               {communities.map((community) => {
-                return (
-                  <li key={community.id}>
-                    <a>
-                      <img src={community.image} />
-                      <span>{community.title}</span>
-                    </a>
-                  </li>
-                )
+                if (communities.indexOf(community) < 6) {
+                  return (
+                    <li key={community.id}>
+                      <a>
+                        <img src={community.image} />
+                        <span>{community.title}</span>
+                      </a>
+                    </li>
+                  )
+                }
               })}
+                
             </ul>
           </ProfileRelationsBoxWrapper>
         </div>
