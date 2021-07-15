@@ -93,7 +93,7 @@ AlurakutMenu.Wrapper = styled.header`
     }
   }
   .container {
-    background-color: #450329;
+    background-color: #70baff;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     padding: 7px 16px;
@@ -142,7 +142,7 @@ AlurakutMenu.Wrapper = styled.header`
     }
     input {
       color: #ffffff;
-      background: #af70a9;
+      background: #6091bf;
       padding: 10px 42px;
       border: 0;
       background-image: url(${`${BASE_URL}/icons/search.svg`});

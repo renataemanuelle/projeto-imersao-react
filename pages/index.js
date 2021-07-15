@@ -61,6 +61,28 @@ function InteractionForm() {
   )
 }
 
+function ProfileRelationsBox(propriedades) {
+  return (
+    <ProfileRelationsBoxWrapper>
+      <h2 className="smallTitle">
+        {propriedades.title} ({propriedades.items.length})
+      </h2>
+      <ul>
+        {/* {seguidores.map((itemAtual) => {
+          return (
+            <li key={itemAtual}>
+              <a href={`https://github.com/${itemAtual}.png`}>
+                <img src={itemAtual.image} />
+                <span>{itemAtual.title}</span>
+              </a>
+            </li>
+          )
+        })} */}
+      </ul>
+    </ProfileRelationsBoxWrapper>
+  )
+}
+
 export default function Home() {
   const user = {
     name: 'Tomoyo Daidouji',
@@ -87,10 +109,25 @@ export default function Home() {
     image: 'https://pbs.twimg.com/profile_images/417808326584307712/meCbkbRU.jpeg'}
   ]
   const [communities, setCommunities]  = React.useState([{
-  id: '12802378123789378912789789123896123', 
-  title: 'Eu odeio acordar cedo',
-  image: 'https://alurakut.vercel.app/capa-comunidade-01.jpg'
-}]);
+    id: '12802378123789378912789789123896123', 
+    title: 'Eu odeio acordar cedo',
+    image: 'https://alurakut.vercel.app/capa-comunidade-01.jpg'
+  }]);
+
+  const [followers, setFollowers] = React.useState([]);
+  // 0 - Pegar o array de dados do github 
+  React.useEffect(function() {
+    fetch('https://api.github.com/users/renataemanuelle/followers')
+    .then(function (serverResponse) {
+      return serverResponse.json();
+    })
+    .then(function(serverResponseConverted) {
+      setFollowers(serverResponseConverted);
+      console.log('seguidores', followers);
+    })
+  }, [])
+
+
 
   return (
     <>
@@ -101,9 +138,9 @@ export default function Home() {
         </div>
         <div className="welcomeArea" style={{gridArea: 'welcomeArea'}}>
           <Box>
-            <h1 className="title">Bem vindo(a), Tomoyo</h1>
+            <h1 className="title">Bem vinde!</h1>
             <p>
-              <b>Sorte de hoje: </b>
+              <b>🍀 Sorte de hoje: </b>
               A pessoa que lê a sua sorte não está se sentindo bem hoje. Esperamos que você esteja.
             </p>
             <OrkutNostalgicIconSet />
@@ -161,6 +198,7 @@ export default function Home() {
               })}
             </ul>
           </ProfileRelationsBoxWrapper>
+          <ProfileRelationsBox title="Seguidores" items={followers} />
           <ProfileRelationsBoxWrapper>
             <h2 className="smallTitle">
               Comunidades ({communities.length})

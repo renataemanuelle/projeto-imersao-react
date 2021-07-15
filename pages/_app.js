@@ -13,12 +13,16 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: sans-serif;
-    background-color: #ebdbea;
-    background-image: url("https://i.redd.it/1fdmr75w8c611.png"); 
-    background-repeat: no-repeat;
+    background: linear-gradient(0deg, hsla(209, 84%, 88%, 1) 0%, hsla(260, 80%, 88%, 1) 50%, hsla(326, 84%, 88%, 1) 100%);
+    /* background: #b088ff url("https://www.wallpapersun.com/wp-content/uploads/2020/07/jzf03bl7lae31-715x1271.jpg") repeat-x fixed;
+    background-size: contain; */
+    /* background-color: #ebdbea;
+    background-image: url("https://www.wallpapersun.com/wp-content/uploads/2020/07/jzf03bl7lae31-715x1271.jpg"); 
+    background-repeat: repeat-x;
     background-position: center top;
     background-attachment: fixed;
-    background-size: cover;
+    background-size: contain; */
+    
 
   }
 
