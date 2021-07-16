@@ -108,14 +108,15 @@ export default function Home() {
     name: 'Inuyasha',
     image: 'https://pbs.twimg.com/profile_images/417808326584307712/meCbkbRU.jpeg'}
   ]
-  const [communities, setCommunities]  = React.useState([{
-    id: '12802378123789378912789789123896123', 
-    title: 'Eu odeio acordar cedo',
-    image: 'https://alurakut.vercel.app/capa-comunidade-01.jpg'
-  }]);
+  // const [communities, setCommunities]  = React.useState([{
+  //   id: '12802378123789378912789789123896123', 
+  //   title: 'Eu odeio acordar cedo',
+  //   image: 'https://alurakut.vercel.app/capa-comunidade-01.jpg'
+  // }]);
+  const [communities, setCommunities]  = React.useState([])
 
   const [followers, setFollowers] = React.useState([]);
-  // 0 - Pegar o array de dados do github 
+  // 0 - Pegar o array de dados do github -- GET
   React.useEffect(function() {
     fetch('https://api.github.com/users/renataemanuelle/followers')
     .then(function (serverResponse) {
@@ -126,9 +127,34 @@ export default function Home() {
       console.log('seguidores', followers);
     })
   }, [])
-
-
-
+  React.useEffect(function() {
+    fetch('https://graphql.datocms.com/', {
+      method: 'POST',
+      headers: {
+        'Authorization': '7f7590695431ea76f84616a4b4d32d',
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({ "query": `query {
+        allCommunities {
+          id 
+          title
+          imageUrl
+          creatorSlug
+        }
+      }` })
+    })
+    .then((response) => response.json()) // Pega o retorno do response.json() e já retorna
+    .then((respostaCompleta) => {
+      const comunidadesVindasDoDato = respostaCompleta.data.allCommunities;
+      console.log(comunidadesVindasDoDato)
+      setCommunities(comunidadesVindasDoDato)
+    })
+    // .then(function (response) {
+    //   return response.json()
+    // })
+  }, [])
+  
   return (
     <>
       <AlurakutMenu user={user} />
@@ -155,8 +181,22 @@ export default function Home() {
                 title: dadosDoForm.get('title'),
                 image: dadosDoForm.get('image'),
               }
-              const updateCommunities = [...communities, community];
-              setCommunities(updateCommunities)
+              const updatedCommunities = [...communities, community];
+              setCommunities(updatedCommunities)
+              //
+              // fetch('/api/communities', {
+              //   method: 'POST',
+              //   headers: {
+              //     'Content-Type': 'application/json',
+              //   },
+              //   body: JSON.stringify(community)
+              // })
+              // .then(async (response) => {
+              //   const dados = await response.json();
+              //   const community = dados.registroCriado;
+              //   const updatedCommunities = [...communities, community];
+              //   setComunidades(updatedCommunities)
+              // })
             }}>
               <div>
                 <input
